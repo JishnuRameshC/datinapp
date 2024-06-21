@@ -1,4 +1,4 @@
-from django.forms import ModelForm, Form, TextInput, PasswordInput, CharField
+from django.forms import ModelForm, Form, TextInput, PasswordInput, CharField,EmailInput
 from .models import User
 
 class LoginFrom(Form):
@@ -26,3 +26,20 @@ class UserCreationForm(ModelForm):
     class Meta:
         model = User
         fields = ["first_name","last_name","username","email","password"]
+        widgets = {
+            "first_name": TextInput({
+                'class': 'form-control'
+            }),
+            "last_name": TextInput({
+                'class': 'form-control'
+            }),
+            "username": TextInput({
+                'class': 'form-control'
+            }),
+            "email": EmailInput({
+                'class': 'form-control'
+            }),
+            "password": PasswordInput({
+                'class': 'form-control'
+            }),
+        }
