@@ -1,6 +1,6 @@
-from django.forms import ModelForm, Form, TextInput, PasswordInput, CharField,EmailInput
+from django.forms import ModelForm, Form, TextInput, PasswordInput, CharField,EmailInput,ClearableFileInput
 from .models import User
-
+from django import forms
 class LoginFrom(Form):
     username = CharField(
         max_length = 15,
@@ -23,9 +23,15 @@ class LoginFrom(Form):
     )
 
 class UserCreationForm(ModelForm):
+    profilePicture = forms.ImageField(
+        required=False,
+        widget=ClearableFileInput(attrs={
+            'class': 'form-control'
+        })
+    )
     class Meta:
         model = User
-        fields = ["first_name","last_name","username","email","password"]
+        fields = ["first_name","last_name","username","email","password","profilePicture"]
         widgets = {
             "first_name": TextInput({
                 'class': 'form-control'

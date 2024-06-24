@@ -23,7 +23,7 @@
                 {% endfor %}
             </div>
             {% endif %}
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="">{{ form.first_name.label }}</label>
                     {{ form.first_name }}
@@ -44,10 +44,15 @@
                     <label for="">{{ form.password.label }}</label>
                     {{ form.password }}
                 </div>
+
+                <div class="form-group">
+                    <label for="">{{ form.profilePicture.label }}</label>
+                    {{ form.profilePicture }}
+                </div>
                 
                 <div class="d-grid">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-primary mt-2">Login</button>
+                    <button type="submit" class="btn btn-primary mt-2">Register</button>
                 </div>
             </form>
         </div>
